@@ -1,0 +1,10 @@
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\dto\AnimeDTO.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\AnimaiApplication.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\repositories\TagRepository.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\entities\Anime.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\services\exceptions\ResourceNotFoundException.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\services\AnimeService.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\repositories\AnimeRepository.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\dto\TagDTO.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\entities\Tag.java
+E:\Projetos\full_sites\backend\animai\src\main\java\com\animai\animai\resources\AnimeResources.java

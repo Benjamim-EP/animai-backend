@@ -1,0 +1,10 @@
+com\animai\animai\entities\Tag.class
+com\animai\animai\resources\AnimeResources.class
+com\animai\animai\services\AnimeService.class
+com\animai\animai\services\exceptions\ResourceNotFoundException.class
+com\animai\animai\repositories\TagRepository.class
+com\animai\animai\entities\Anime.class
+com\animai\animai\AnimaiApplication.class
+com\animai\animai\dto\TagDTO.class
+com\animai\animai\repositories\AnimeRepository.class
+com\animai\animai\dto\AnimeDTO.class
