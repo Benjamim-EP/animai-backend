@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,18 @@ public class AnimeResources {
 
         Page<AnimeDTO> list = service.findAllPaged(tagId,tag_name.trim(), Pageable);  
         return ResponseEntity.ok().body(list); 
+    }
+
+    /**
+	 * Endpoint para buscar um anime pelo seu ID.
+	 * 
+	 * @param id O ID do anime a ser buscado.
+	 * @return ResponseEntity contendo o ProductDTO correspondente ao ID fornecido.
+	 */
+	@GetMapping(value = "/{id}")
+    public ResponseEntity<AnimeDTO> findById(@PathVariable Long id) {
+        AnimeDTO animeDTO = service.findById(id);
+        return ResponseEntity.ok().body(animeDTO);
     }
     
 }

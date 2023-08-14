@@ -69,11 +69,11 @@ public class AnimeDTO implements Serializable {
 		this.episodeCount = episodeCount;
 	}
 
-	public List<TagDTO> getCategories() {
+	public List<TagDTO> getTags() {
 		return tags;
 	}
 
-	public void setCategories(List<TagDTO> tags) {
+	public void setTags(List<TagDTO> tags) {
 		this.tags = tags;
 	}
 

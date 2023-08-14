@@ -1,0 +1,136 @@
+Listagem de caminhos de pasta para o volume Novo volume
+O número de série do volume é F62F-8C5A
+E:.
+¦   HELP.md
+¦   mvnw
+¦   mvnw.cmd
+¦   pom.xml
+¦   tree.txt
+¦   
++---.mvn
+¦   +---wrapper
+¦           maven-wrapper.jar
+¦           maven-wrapper.properties
+¦           
++---.vscode
+¦       settings.json
+¦       
++---src
+¦   +---main
+¦   ¦   +---java
+¦   ¦   ¦   +---com
+¦   ¦   ¦       +---animai
+¦   ¦   ¦           +---animai
+¦   ¦   ¦               ¦   AnimaiApplication.java
+¦   ¦   ¦               ¦   
+¦   ¦   ¦               +---dto
+¦   ¦   ¦               ¦       AnimeDTO.java
+¦   ¦   ¦               ¦       TagDTO.java
+¦   ¦   ¦               ¦       
+¦   ¦   ¦               +---entities
+¦   ¦   ¦               ¦       Anime.java
+¦   ¦   ¦               ¦       Tag.java
+¦   ¦   ¦               ¦       
+¦   ¦   ¦               +---repositories
+¦   ¦   ¦               ¦       AnimeRepository.java
+¦   ¦   ¦               ¦       TagRepository.java
+¦   ¦   ¦               ¦       
+¦   ¦   ¦               +---resources
+¦   ¦   ¦               ¦       AnimeResources.java
+¦   ¦   ¦               ¦       
+¦   ¦   ¦               +---services
+¦   ¦   ¦                   ¦   AnimeService.java
+¦   ¦   ¦                   ¦   
+¦   ¦   ¦                   +---exceptions
+¦   ¦   ¦                           ResourceNotFoundException.java
+¦   ¦   ¦                           
+¦   ¦   +---resources
+¦   ¦       ¦   application-prod.properties
+¦   ¦       ¦   application-test.properties
+¦   ¦       ¦   application.properties
+¦   ¦       ¦   
+¦   ¦       +---static
+¦   ¦       +---templates
+¦   +---test
+¦       +---java
+¦           +---com
+¦               +---animai
+¦                   +---animai
+¦                       ¦   AnimaiApplicationTests.java
+¦                       ¦   
+¦                       +---services
+¦                       ¦       AnimeServiceTest.java
+¦                       ¦       
+¦                       +---tests
+¦                               Factory.java
+¦                               
++---target
+    ¦   animai-0.0.1-SNAPSHOT.jar
+    ¦   animai-0.0.1-SNAPSHOT.jar.original
+    ¦   
+    +---classes
+    ¦   ¦   application-prod.properties
+    ¦   ¦   application-test.properties
+    ¦   ¦   application.properties
+    ¦   ¦   
+    ¦   +---com
+    ¦       +---animai
+    ¦           +---animai
+    ¦               ¦   AnimaiApplication.class
+    ¦               ¦   
+    ¦               +---dto
+    ¦               ¦       AnimeDTO.class
+    ¦               ¦       TagDTO.class
+    ¦               ¦       
+    ¦               +---entities
+    ¦               ¦       Anime.class
+    ¦               ¦       Tag.class
+    ¦               ¦       
+    ¦               +---repositories
+    ¦               ¦       AnimeRepository.class
+    ¦               ¦       TagRepository.class
+    ¦               ¦       
+    ¦               +---resources
+    ¦               ¦       AnimeResources.class
+    ¦               ¦       
+    ¦               +---services
+    ¦                   ¦   AnimeService.class
+    ¦                   ¦   
+    ¦                   +---exceptions
+    ¦                           ResourceNotFoundException.class
+    ¦                           
+    +---generated-sources
+    ¦   +---annotations
+    +---generated-test-sources
+    ¦   +---test-annotations
+    +---maven-archiver
+    ¦       pom.properties
+    ¦       
+    +---maven-status
+    ¦   +---maven-compiler-plugin
+    ¦       +---compile
+    ¦       ¦   +---default-compile
+    ¦       ¦           createdFiles.lst
+    ¦       ¦           inputFiles.lst
+    ¦       ¦           
+    ¦       +---testCompile
+    ¦           +---default-testCompile
+    ¦                   createdFiles.lst
+    ¦                   inputFiles.lst
+    ¦                   
+    +---surefire-reports
+    ¦       com.animai.animai.AnimaiApplicationTests.txt
+    ¦       TEST-com.animai.animai.AnimaiApplicationTests.xml
+    ¦       
+    +---test-classes
+        +---com
+            +---animai
+                +---animai
+                    ¦   AnimaiApplicationTests.class
+                    ¦   
+                    +---services
+                    ¦       AnimeServiceTest.class
+                    ¦       
+                    +---tests
+                            Factory.class
+                            
