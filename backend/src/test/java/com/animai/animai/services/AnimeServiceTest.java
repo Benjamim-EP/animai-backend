@@ -5,13 +5,16 @@ import static org.mockito.ArgumentMatchers.any;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -19,6 +22,7 @@ import org.mockito.Mockito;
 
 
 import com.animai.animai.entities.Anime;
+import com.animai.animai.dto.AnimeDTO;
 import com.animai.animai.repositories.AnimeRepository;
 import com.animai.animai.tests.Factory;
 
@@ -58,6 +62,11 @@ public class AnimeServiceTest {
         Mockito.doThrow(DataIntegrityViolationException.class).when(repository).deleteById(dependentId);
     }
 
-    
+     @Test
+    public void findAllPagedShouldReturnPage() {
+        Pageable pageable = PageRequest.of(0, 12);
+        Page<AnimeDTO> result = service.findAllPaged(pageable);
+        Assertions.assertNotNull(result);
+    }
 
 }

@@ -79,6 +79,11 @@ public class AnimeResourceTests {
 		result.andExpect(jsonPath("$.anime_id").exists());
 		result.andExpect(jsonPath("$.description").exists());
 		result.andExpect(jsonPath("$.picurl").exists());
-	
+		result.andExpect(jsonPath("$.names").exists());
+		result.andExpect(jsonPath("$.episodes").exists());
+		result.andExpect(jsonPath("$.characters").exists());
+		result.andExpect(jsonPath("$.ratings").exists());
+		result.andExpect(jsonPath("$.creators").exists());
+		
     }
 }
