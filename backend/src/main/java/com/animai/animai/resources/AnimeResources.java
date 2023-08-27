@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 import com.animai.animai.dto.AnimeDTO;
 import com.animai.animai.services.AnimeService;
@@ -21,15 +21,13 @@ public class AnimeResources {
     @Autowired
     private AnimeService service;
 
+    // http://localhost:8080/animes/all?page=n
     @GetMapping(value = "/all")
-    public ResponseEntity<Page<AnimeDTO>> findAll(
-            @RequestParam(value = "tagID", defaultValue = "0") Long tagId,
-            @RequestParam(value = "tag_name", defaultValue = "") String tag_name,
-            Pageable Pageable){
-
-        Page<AnimeDTO> list = service.findAllPaged(tagId,tag_name.trim(), Pageable);  
-        return ResponseEntity.ok().body(list); 
+    public ResponseEntity<Page<AnimeDTO>> findAll(@PageableDefault(size = 10) Pageable pageable) {
+        Page<AnimeDTO> list = service.findAllPaged(pageable);
+        return ResponseEntity.ok().body(list);
     }
+
 
     /**
 	 * Endpoint para buscar um anime pelo seu ID.

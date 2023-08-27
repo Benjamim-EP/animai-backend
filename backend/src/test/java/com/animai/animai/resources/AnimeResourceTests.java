@@ -48,8 +48,8 @@ public class AnimeResourceTests {
     @BeforeEach
     void setUp() throws Exception {
         // IDs de Animes para teste
-		existingId = 16L;
-		nonExistingId = 2L;
+		existingId = 17L;
+		nonExistingId = 17434L;
 		dependentId = 3L;
 		
 		// Criação de um AnimeDTO de teste
@@ -58,7 +58,7 @@ public class AnimeResourceTests {
 		page = new PageImpl<>(List.of(animeDTO));
 
         // Define o comportamento do mock AnimeService
-		when(service.findAllPaged(any(), any(), any())).thenReturn(page);
+		when(service.findAllPaged(any())).thenReturn(page);
 		when(service.findById(existingId)).thenReturn(animeDTO);
 		when(service.findById(nonExistingId)).thenThrow(ResourceNotFoundException.class);
 		when(service.insert(any())).thenReturn(animeDTO);
@@ -77,9 +77,8 @@ public class AnimeResourceTests {
 		
 		result.andExpect(status().isOk());
 		result.andExpect(jsonPath("$.anime_id").exists());
-		result.andExpect(jsonPath("$.title").exists());
-		result.andExpect(jsonPath("$.year").exists());
-        result.andExpect(jsonPath("$.episodeCount").exists());
+		result.andExpect(jsonPath("$.description").exists());
+		result.andExpect(jsonPath("$.picurl").exists());
 	
     }
 }

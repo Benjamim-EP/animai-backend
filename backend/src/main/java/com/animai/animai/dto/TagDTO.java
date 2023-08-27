@@ -9,19 +9,22 @@ public class TagDTO implements Serializable {
 
     private Long tag_id;
     private String tag_name;
+    private String picurl;
 
     public TagDTO(){
 
     }
 
-    public TagDTO(Long tag_id, String tag_name) {
+    public TagDTO(Long tag_id, String tag_name,String picurl) {
         this.tag_id = tag_id;
         this.tag_name = tag_name;
+        this.picurl = picurl;
     }
 
     public TagDTO(Tag entity){
         this.tag_id = entity.getTag_id();
         this.tag_name = entity.getTag_name();
+        this.picurl = entity.getPicurl();
     }
 
     public long getTag_id() {
@@ -35,6 +38,14 @@ public class TagDTO implements Serializable {
     }
     public void setTag_name(String tag_name) {
         this.tag_name = tag_name;
+    }
+
+    public String getPicurl() {
+        return picurl;
+    }
+
+    public void setPicurl(String picurl) {
+        this.picurl = picurl;
     }
 
     

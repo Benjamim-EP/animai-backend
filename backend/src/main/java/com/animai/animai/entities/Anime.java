@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,14 +28,17 @@ public class Anime implements Serializable {
     @Column(name = "anime_id")
     private Long animeId;
     
-    @Column(name = "title", nullable = false)
-    private String title;
-    
-    @Column(name = "year")
-    private Integer year;
-    
-    @Column(name = "episode_count")
-    private Integer episodeCount;
+    @Column(name = "description", nullable = false)
+    private String description;
+       
+    @Column(name = "picurl")
+    private String picUrl;
+
+    @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Name> names = new HashSet<>();
+
+    @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Episode> episodes = new HashSet<>();
 
     @ManyToMany
 	@JoinTable(name = "animetags",
@@ -41,15 +46,29 @@ public class Anime implements Serializable {
 		inverseJoinColumns = @JoinColumn(name = "tag_id"))	
 	Set<Tag> tags = new HashSet<>();
 
+    @ManyToMany
+	@JoinTable(name = "animecharacters",
+		joinColumns = @JoinColumn(name = "anime_id"),
+		inverseJoinColumns = @JoinColumn(name = "character_id"))	
+	Set<Character> characters = new HashSet<>();
+
+    @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Rating> ratings = new HashSet<>();
+
+    
+    @OneToMany(mappedBy = "anime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Creators> creators = new HashSet<>();
+
+
+
     public Anime(){
         
     }
     
-    public Anime(Long animeId, String title, Integer year, Integer episodeCount) {
+    public Anime(Long animeId, String description, String picUrl) {
         this.animeId = animeId;
-        this.title = title;
-        this.year = year;
-        this.episodeCount = episodeCount;
+        this.description = description;
+        this.picUrl = picUrl;
     }
    
     public Long getAnimeId() {
@@ -58,28 +77,61 @@ public class Anime implements Serializable {
     public void setAnimeId(Long animeId) {
         this.animeId = animeId;
     }
-    public String getTitle() {
-        return title;
+    public String getDescription() {
+        return description;
     }
-    public void setTitle(String title) {
-        this.title = title;
+    public void setdescription(String description) {
+        this.description = description;
     }
-    public Integer getYear() {
-        return year;
+
+    public String getPicurl() {
+        return picUrl;
     }
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-    public Integer getEpisodeCount() {
-        return episodeCount;
-    }
-    public void setEpisodeCount(Integer episodeCount) {
-        this.episodeCount = episodeCount;
+    public void setPicurl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
     public Set<Tag> getTags() {
-		return tags;
-	}
+        return tags;
+    }
+
+    public Set<Name> getNames() {
+        return names;
+    }
+
+    public Set<Rating> getRatings() {
+        return ratings;
+    }
+    
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public Set<Creators> getCreators() {
+        return creators;
+    }
+    
+    public void setCreators(Set<Creators> creators) {
+        this.creators = creators;
+    }
+
+    
+
+    public Set<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(Set<Character> characters) {
+        this.characters = characters;
+    }
+
+    public Set<Episode> getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(Set<Episode> episodes) {
+        this.episodes = episodes;
+    }
 
     @Override
     public int hashCode() {

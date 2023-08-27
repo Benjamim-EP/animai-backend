@@ -1,15 +1,12 @@
 package com.animai.animai.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -20,14 +17,15 @@ public class Tag implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "tag_id")
+    @Column(name = "tag_id")
     private long tag_id;
 
-    //@Column(name = "title", nullable = false)
+    @Column(name = "name", nullable = false)
     private String tag_name;
 
-    @ManyToMany(mappedBy = "tags")
-    private Set<Anime> animes = new HashSet<>();
+    @Column(name = "picurl")
+    private String picurl;
+    
 
     public Tag(){
         
@@ -35,6 +33,7 @@ public class Tag implements Serializable {
     public Tag(Tag entity){
         this.tag_id = entity.getTag_id();
         this.tag_name = entity.getTag_name();
+        this.picurl = entity.getPicurl();
     }
 
     public Tag(long tag_id, String tag_name) {
@@ -56,6 +55,13 @@ public class Tag implements Serializable {
 
     public void setTag_name(String tag_name) {
         this.tag_name = tag_name;
+    }
+    
+    public String getPicurl() {
+        return picurl;
+    }
+    public void setPicurl(String picurl) {
+        this.picurl = picurl;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.animai.animai.services;
 
-import java.util.Arrays;
-import java.util.List;
+//import java.util.Arrays;
+//import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -16,11 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.animai.animai.repositories.AnimeRepository;
-import com.animai.animai.repositories.TagRepository;
 import com.animai.animai.dto.AnimeDTO;
-import com.animai.animai.dto.TagDTO;
 import com.animai.animai.entities.Anime;
-import com.animai.animai.entities.Tag;
 import com.animai.animai.services.exceptions.DatabaseException;
 import com.animai.animai.services.exceptions.ResourceNotFoundException;
 
@@ -30,23 +27,19 @@ public class AnimeService {
     @Autowired
     private AnimeRepository repository;
 
-	@Autowired
-	private TagRepository tagRepository;
-
 	@Transactional(readOnly = true)
-	public Page<AnimeDTO> findAllPaged(Long tagId, String name, Pageable pageable) {
-		List<Tag> tags = (tagId == 0) ? null : Arrays.asList(tagRepository.getOne(tagId));
-		Page<Anime> page = repository.find(tags, name, pageable);
-		repository.findAnimesWithTags(page.getContent());
-		return page.map(x -> new AnimeDTO(x, x.getTags()));
+	public Page<AnimeDTO> findAllPaged(Pageable pageable) {
+		Page<Anime> page = repository.findAll(pageable);
+		return page.map(x -> new AnimeDTO(x));
 	}
+
 
 
     @Transactional(readOnly = true)
 	public AnimeDTO findById(Long id) {
 		Optional<Anime> obj = repository.findById(id);
 		Anime entity = obj.orElseThrow(() -> new ResourceNotFoundException("Anime não encontrado"));
-		return new AnimeDTO(entity, entity.getTags());
+		return new AnimeDTO(entity,entity.getTags(),entity.getNames(),entity.getRatings(),entity.getCreators(),entity.getCharacters(), entity.getEpisodes());
 	}
 
 	@Transactional
@@ -107,14 +100,8 @@ public class AnimeService {
 	 */
 	private void copyDtoToEntity(AnimeDTO dto, Anime entity) {
 
-		entity.setTitle(dto.getTitle());
-		entity.setYear(dto.getYear());
-		entity.setEpisodeCount(dto.getEpisodeCount());
+		entity.setdescription(dto.getdescription());
+		entity.setPicurl(dto.getPicurl());
 
-		entity.getTags().clear();
-		for (TagDTO tagDto : dto.getTags()) {
-			Tag tag = tagRepository.getOne(tagDto.getTag_id());
-			entity.getTags().add(tag);			
-		}
 	}	
 }
