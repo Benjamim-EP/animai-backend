@@ -100,8 +100,8 @@ public class AnimeService {
 	 */
 	private void copyDtoToEntity(AnimeDTO dto, Anime entity) {
 
-		entity.setdescription(dto.getdescription());
-		entity.setPicurl(dto.getPicurl());
+		entity.setDescription(dto.getDescription());
+		entity.setPicUrl(dto.getPicurl());
 
 	}	
 }
