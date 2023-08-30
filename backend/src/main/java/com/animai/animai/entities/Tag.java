@@ -9,9 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tags")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "tag_id")
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -25,68 +33,4 @@ public class Tag implements Serializable {
 
     @Column(name = "picurl")
     private String picurl;
-    
-
-    public Tag(){
-        
-    }
-    public Tag(Tag entity){
-        this.tag_id = entity.getTag_id();
-        this.tag_name = entity.getTag_name();
-        this.picurl = entity.getPicurl();
-    }
-
-    public Tag(long tag_id, String tag_name) {
-        this.tag_id = tag_id;
-        this.tag_name = tag_name;
-    }
-
-    public long getTag_id() {
-        return tag_id;
-    }
-
-    public void setTag_id(int tag_id) {
-        this.tag_id = tag_id;
-    }
-
-    public String getTag_name() {
-        return tag_name;
-    }
-
-    public void setTag_name(String tag_name) {
-        this.tag_name = tag_name;
-    }
-    
-    public String getPicurl() {
-        return picurl;
-    }
-    public void setPicurl(String picurl) {
-        this.picurl = picurl;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (int) (tag_id ^ (tag_id >>> 32)); // Calculate hash code for long
-        return result;
-    }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Tag other = (Tag) obj;
-        if (tag_id != other.tag_id)
-            return false;
-        return true;
-    } 
-
-    
-
 }

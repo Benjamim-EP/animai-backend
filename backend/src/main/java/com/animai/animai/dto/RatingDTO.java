@@ -14,7 +14,7 @@ public class RatingDTO {
 
     public RatingDTO(Rating entity) {
         this.rating_id = entity.getRatingId();
-        this.anime_id = entity.getAnime_id();
+        this.anime_id = entity.getAnimeId();
         this.counting = entity.getCounting();
         this.note = entity.getNote();
     }

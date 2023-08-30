@@ -20,7 +20,7 @@ public class CreatorsDTO implements Serializable {
     private String type;
 
     public CreatorsDTO(Creators entity){
-        this.creator_id = entity.getCreatorsId();
+        this.creator_id = entity.getCreatorId();
         this.anime_id  = entity.getAnime_id();
         this.name  = entity.getName();
         this.type      = entity.getType();
